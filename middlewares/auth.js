@@ -5,13 +5,13 @@ const authenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;
   
   if (!authHeader) {
-    return res.status(401).json({ error: 'Authentication required.' });
+    return res.status(401).json({ error: 'Burh login toh kar' });
   }
 
   const token = authHeader.split(' ')[1]; // Bearer token format: "Bearer <token>"
 
   if (!token) {
-    return res.status(401).json({ error: 'Authentication required.' });
+    return res.status(401).json({ error: 'Bruh login toh kar' });
   }
 
   try {
