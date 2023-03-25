@@ -34,6 +34,7 @@ const getPost = async (req, res) => {
 const createPost = async (req, res) => {
   try {
     const { title, content } = req.body;
+    if(!title || !content) return res.status(400).json({error: 'Please provide a title and content.'});
     const authorId = req.user.userId;
 
     const post = await prisma.post.create({
@@ -54,6 +55,7 @@ const updatePost = async (req, res) => {
   try {
     const postId = req.params.id;
     const { title, content } = req.body;
+    if(!title ||!content) return res.status(400).json({error: 'Please provide a title and content.'});
     const authorId = req.user.userId;
 
     const post = await prisma.post.findUnique({ where: { id: postId } });
